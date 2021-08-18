@@ -1,0 +1,16 @@
+<div class="container mt-3">
+  <h2>List of the Restaurants:</h2>
+  <div class="display-flex">
+    <% @restaurants.each do |restaurant| %>
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title"><%= restaurant.name %></h4>
+        <h6 class="card-subtitle mb-2 text-muted"><%= restaurant.category %></h4>
+        <p class="card-text"><%= restaurant.address %></p>
+        <%= link_to 'Details', restaurant_path(restaurant.id), class: "btn btn-primary" %>
+        <%= link_to 'Add a review', new_restaurant_review_path(restaurant.id), class: "btn btn-primary" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

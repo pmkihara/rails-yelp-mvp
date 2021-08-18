@@ -1,0 +1,21 @@
+<div class="container mt-3 bg-white p-3">
+  <h2><%= @restaurant.name %></h2>
+  <h6 class=text-muted><%= @restaurant.category %></h6>
+  <p><%= @restaurant.address %></p>
+  <hr>
+  <h4>Add a new review:</h4>
+  <%= render '/reviews/form', restaurant: @restaurant, review: @review %>
+  <hr>
+  <h4>Reviews:</h4>
+  <ul class="list-group">
+    <% if @restaurant.reviews.length.zero? %>
+      <li class="list-group-item">This restaurant does not have any reviews yet!</li>
+    <% else %>
+      <% @restaurant.reviews.each do |review| %>
+        <li class="list-group-item">(<%= review.rating %> stars) <%= review.content %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <hr>
+  <p><%= link_to 'Back to list', restaurants_path%></p>
+</div>
